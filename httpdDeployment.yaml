@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: httpd-container
-        image: docker.io/library/httpd:2.4.41
+        image: image-registry.openshift-image-registry.svc:5000/openshift/httpd@sha256:f31696f37cc7d4359529d71c862bf62d98ca47fa0cc2211e7f451ca026060b38
         ports:
         - containerPort: 80
