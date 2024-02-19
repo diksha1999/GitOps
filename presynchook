@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pre-sync-hook-job
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      serviceAccountName: testhook
+      containers:
+      - name: pre-sync-hook
+        image: registry.access.redhat.com/ubi8/ubi@sha256:627867e53ad6846afba2dfbf5cef1d54c868a9025633ef0afd546278d4654eac
+        command: ["sh", "-c", "echo Job executed successfully"]
+      restartPolicy: Never
