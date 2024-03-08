@@ -5,6 +5,12 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: testing
+    notifications.argoproj.io/subscribe.on-deployed.slack: testing
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: testing
+    notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: testing
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: testing
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: testing
 spec:
   replicas: 1
   selector:
