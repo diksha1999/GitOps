@@ -1,0 +1,191 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: developer
+  labels:
+    argocd.argoproj.io/managed-by: openshift-gitops
+    lih.lu/argocd-cluster: authorizations
+  annotations:
+    argocd.argoproj.io/sync-wave: '-10'
+rules:
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - update
+      - patch
+    apiGroups:
+      - ''
+    resources:
+      - pods
+  - verbs:
+      - get
+      - create
+    apiGroups:
+      - ''
+    resources:
+      - pods/exec
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - ''
+    resources:
+      - pods/log
+  - verbs:
+      - get
+      - list
+      - create
+    apiGroups:
+      - ''
+    resources:
+      - pods/portforward
+  - verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - delete
+    apiGroups:
+      - ''
+    resources:
+      - configmaps
+  - verbs:
+      - watch
+    apiGroups:
+      - ''
+    resources:
+      - events
+  - verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - delete
+    apiGroups:
+      - ''
+    resources:
+      - secrets
+  - verbs:
+      - get
+      - list
+      - create
+      - delete
+      - update
+      - patch
+    apiGroups:
+      - ''
+    resources:
+      - services
+  - verbs:
+      - get
+      - list
+      - create
+      - delete
+    apiGroups:
+      - ''
+    resources:
+      - routes
+  - verbs:
+      - get
+      - list
+      - create
+      - delete
+    apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - update
+      - patch
+    apiGroups:
+      - ''
+    resources:
+      - persistentvolumeclaims
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - delete
+    apiGroups:
+      - apps
+    resources:
+      - deployments
+  - verbs:
+      - get
+      - list
+      - patch
+      - delete
+    apiGroups:
+      - apps
+    resources:
+      - replicasets
+  - verbs:
+      - get
+      - list
+    apiGroups:
+      - ''
+    resources:
+      - namespaces
+  - verbs:
+      - get
+    apiGroups:
+      - ''
+    resources:
+      - projects
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - delete
+    apiGroups:
+      - batch
+    resources:
+      - cronjob
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - delete
+    apiGroups:
+      - argoproj.io
+    resources:
+      - Application
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - delete
+    apiGroups:
+      - argoproj.io
+    resources:
+      - ApplicationSet
+  - verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - delete
+    apiGroups:
+      - argoproj.io
+    resources:
+      - AppProject
